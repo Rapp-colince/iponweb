@@ -52,5 +52,5 @@ SELECT COUNT(*) FROM leaf GROUP BY alias
 CREATE INDEX parent_alias ON leaf(parent_id, alias);
 
 -- Вариант 2. Если поле alias обладает радикально большей селективностью, чем parent_id, то для этих запросов понадобятся два разных индекса
-CREATE INDEX alias_parent ON leaf(alias, parent_id); -- в начале ставим alias, так как селективность больше
+CREATE INDEX alias_parent ON leaf(alias, parent_id); -- сперва идет alias, так как селективность больше
 CREATE INDEX parent_id ON leaf(parent_id);
