@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+<body>
+    <ul>
+        <li>Передавать в addEventListener желательно имя функции, а не код, так как потом будет невожмнжно использовать removeEventListener</li>
+        <li>Метод addEventListener приступит к выполнению не сразу, а в момент события, поэтому не имеет смысла использовать переменные, так как на момент события они могут уже не существовать или быть перезаписаны (как в этом примере)<br/>Нужно записать переменную i в свойство объекта, а потом использовать его.</li>
+    </ul>
+
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+
+    <script type="text/javascript">
+        var items = document.querySelectorAll('.item');
+
+        showIndex = function(){
+            console.log('you clicked on ' + this.i);
+        };
+        for (var i = 0, max = items.length; i < max ; i++) {
+            var element = items[i];
+            element.i = i;
+            element.addEventListener('click', showIndex);
+        }
+    </script>
+</body>
+</html>
